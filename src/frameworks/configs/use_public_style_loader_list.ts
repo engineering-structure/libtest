@@ -1,8 +1,8 @@
 
 export const use_public_style_loader_list = [{
-  loader: "style-loader"
+  loader: require.resolve("style-loader")
 }, {
-  loader: "css-loader",
+  loader: require.resolve("css-loader"),
   options: {
     modules: {
       exportOnlyLocals: false,
@@ -19,7 +19,7 @@ export const use_public_style_loader_list = [{
     sourceMap: true
   }
 }, {
-  loader: "postcss-loader",
+  loader: require.resolve("postcss-loader"),
   options: {
     postcssOptions: {
       config: true

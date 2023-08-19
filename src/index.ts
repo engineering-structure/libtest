@@ -3,8 +3,7 @@ import { program } from "commander";
 
 import { createConfigFile } from "@/actions/createConfigFile";
 import { clientRuntimeDebuger } from "@/actions/clientRuntimeDebuger";
-import { serverRuntimeDebuger } from "@/actions/serverRuntimeDebuger";
-
+import { nodeRuntimeDebuger } from "@/actions/nodeRuntimeDebuger";
 
 program
   .command("init")
@@ -12,15 +11,16 @@ program
   .action(createConfigFile);
 
 program
-  .command("server")
+  .command("node")
   .argument("source", "需要测试的文件")
-  .description("Runtime Debug With Server Mode")
-  .action(serverRuntimeDebuger);
+  .description("Runtime Debug With Nodejs Mode (Webpack Target Is Node)")
+  .action(nodeRuntimeDebuger);
 
 program
   .command("client")
   .argument("source", "需要测试的文件")
-  .description("Runtime Debug With Client Mode")
+  .option("-p, --port <number> ", "debug server listen port", Number, 3000)
+  .description("Runtime Debug With Client Mode (Webpack Target Is Default Mode)")
   .action(clientRuntimeDebuger);
 
 program.parse();

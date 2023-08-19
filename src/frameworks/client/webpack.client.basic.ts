@@ -17,11 +17,7 @@ export const basicClientConfig = {
   devtool: "source-map",
   resolve: {
     extensions: [".js", ".json", ".ts", ".tsx"],
-    alias: {
-      "library": path.resolve(process.cwd(), "./src/"),
-      "@": path.resolve(process.cwd(), "./example/"),
-      "@@": process.cwd(),
-    }
+    alias: {}
   },
   module: {
     rules: [{
@@ -30,14 +26,14 @@ export const basicClientConfig = {
     }, {
       test: /\.(scss|sass)$/,
       use: use_public_style_loader_list.concat([{
-        loader: "sass-loader",
+        loader: path.resolve("sass-loader"),
         //@ts-ignore
         options: {}
       }])
     }, {
       test: /\.less$/,
       use: use_public_style_loader_list.concat([{
-        loader: "less-loader",
+        loader: path.resolve("less-loader"),
         options: {
           //@ts-ignore
           lessOptions: {
@@ -51,12 +47,12 @@ export const basicClientConfig = {
     }].concat(program_loader).concat(file_loader)
   },
   plugins: [
-    new WebpackBar({ name: "编译客户端", }),
+    new WebpackBar({ name: "以客户端模式进行编译", }),
     new NodePolyfillPlugin(),
     new WebpackAssetsManifest(),
     new HtmlWebpackPlugin({
       publicPath: "/",
-      template: path.resolve(process.cwd(), "./example/applications/index.html")
+      template: path.resolve(__dirname, "../../../statics/index.html")
     })
   ]
 };

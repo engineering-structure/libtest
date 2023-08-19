@@ -1,12 +1,12 @@
 import webpack from "webpack";
 
-import { createServerDevelopmentWebpackConfig } from "@/frameworks/server/webpack.server.development";
+import { createNodeDevelopmentWebpackConfig } from "@/frameworks/nodejs/webpack.node.development";
 import { getRealFilePath } from "@/utils/getRealFilePath";
 
-/** 生成服务端调试的过程 **/
-export async function serverRuntimeDebuger(source) {
+/** Nodejs模式的调试过程 **/
+export async function nodeRuntimeDebuger(source) {
   const realFilePath = getRealFilePath(source);
-  const { webpackConfig, outputPathInfo } = await createServerDevelopmentWebpackConfig(realFilePath);
+  const { webpackConfig, outputPathInfo } = await createNodeDevelopmentWebpackConfig(realFilePath);
   const webpackDevelopmentCompiler = webpack(webpackConfig);
   webpackDevelopmentCompiler.watch({}, (error, stats) => {
     if (error) {

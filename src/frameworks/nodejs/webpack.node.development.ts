@@ -1,11 +1,12 @@
 //@ts-nocheck
+import path from "path";
 import { merge } from "webpack-merge";
 import nodeExternals from "webpack-node-externals";
 
 import { generateTempOutputFile } from "@/utils/generateTempOutputFile";
-import { basicServerConfig } from "./webpack.server.basic";
+import { basicServerConfig } from "./webpack.node.basic";
 
-export async function createServerDevelopmentWebpackConfig(realFilePath: string): Promise<any> {
+export async function createNodeDevelopmentWebpackConfig(realFilePath: string): Promise<any> {
   const { directoryPath, fileName, fullPath } = await generateTempOutputFile();
   const webpackConfig = merge(basicServerConfig, {
     mode: "development",
@@ -14,7 +15,7 @@ export async function createServerDevelopmentWebpackConfig(realFilePath: string)
       path: directoryPath,
       filename: fileName,
     },
-    entry: ["source-map-support/register", realFilePath],
+    entry: realFilePath,
     externals: [nodeExternals({
       modulesFromFile: path.resolve(process.cwd(), "./package.json")
     })],
