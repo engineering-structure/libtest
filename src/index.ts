@@ -13,6 +13,7 @@ program
 
 program
   .command("server")
+  .argument("source", "需要测试的文件")
   .description("Runtime Debug With Server Mode")
   .action(serverRuntimeDebuger);
 

@@ -1,9 +1,18 @@
-// import {Argument,Option} from "commander";
-import { loadRumtimeConfigFile } from "@/utils/loadRumtimeConfigFile";
+import webpack from "webpack";
 
-// export const test_command_argument=new Argument("<actions>","动作类型描述").choices(["init","info"]);
-// export const test_command_option=new Option("-t,--test_option <string>").default("test_option_value");
+import { createServerDevelopmentWebpackConfig } from "@/frameworks/server/webpack.server.development";
+import { getRealFilePath } from "@/utils/getRealFilePath";
 
-export async function serverRuntimeDebuger() {
-  console.log(await loadRumtimeConfigFile());
-}
+/** 生成服务端调试的过程 **/
+export async function serverRuntimeDebuger(source) {
+  const realFilePath = getRealFilePath(source);
+  const { webpackConfig, outputPathInfo } = await createServerDevelopmentWebpackConfig(realFilePath);
+  const webpackDevelopmentCompiler = webpack(webpackConfig);
+  webpackDevelopmentCompiler.watch({}, (error, stats) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(stats.toString({ colors: true }));
+    };
+  });
+};
