@@ -1,7 +1,7 @@
 {
   "name": "@cyber-tools/libtest",
   "version": "1.0.0",
-  "description": "库文件的测试工具",
+  "description": "base webpack javascript library rumtime test tools",
   "main": "./dist/index.js",
   "scripts": {
     "dev": "node ./.bin/index.js",
