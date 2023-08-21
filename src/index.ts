@@ -13,6 +13,7 @@ program
 program
   .command("node")
   .argument("source", "需要测试的文件")
+  .option("-n, --node-options <string>", "Nodejs Command-line Options @see https://nodejs.org/dist/latest-v16.x/docs/api/cli.html", String, null)
   .description("Runtime Debug With Nodejs Mode (Webpack Target Is Node)")
   .action(nodeRuntimeDebuger);
 
