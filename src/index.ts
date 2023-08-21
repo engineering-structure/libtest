@@ -20,7 +20,7 @@ program
 program
   .command("client")
   .argument("source", "需要测试的文件")
-  .option("-p, --port <number> ", "debug server listen port", Number, 3000)
+  .option("-p, --port <number>", "debug server listen port", Number, 3000)
   .description("Runtime Debug With Client Mode (Webpack Target Is Default Mode)")
   .action(clientRuntimeDebuger);
 

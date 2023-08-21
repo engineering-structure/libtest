@@ -8,7 +8,11 @@
     "build": "tsc && tsc-alias"
   },
   "bin": "./.bin/index.js",
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "library",
+    "test"
+  ],
   "author": "shicheng.yu",
   "license": "ISC",
   "devDependencies": {
