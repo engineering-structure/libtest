@@ -1,4 +1,3 @@
-import os from "os";
 import fs from "fs";
 import path from "path";
 import { promisify } from "util";
@@ -6,7 +5,7 @@ import pathExists from "path-exists";
 
 export async function generateTempOutputFile() {
   try {
-    const tempDirectoryPath = path.resolve(os.tmpdir(), "./libtest/");
+    const tempDirectoryPath = path.resolve(process.cwd(), "./.libtest/");
     const tempOutputFilePath = path.resolve(tempDirectoryPath, "./bundle.js");
     if (!await pathExists(tempDirectoryPath)) {
       await promisify(fs.mkdir)(tempDirectoryPath, { recursive: true });
