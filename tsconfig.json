@@ -1,6 +1,7 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "jsx": "react",
     "allowArbitraryExtensions": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
