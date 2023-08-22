@@ -1,6 +1,6 @@
 {
   "name": "@cyber-tools/libtest",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "base webpack javascript library rumtime test tools",
   "main": "./dist/index.js",
   "scripts": {
